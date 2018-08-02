@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeekFlixServer.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class VideoController : Controller
     {
         // GET api/values
         [HttpGet]
