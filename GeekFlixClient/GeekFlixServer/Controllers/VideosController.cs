@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Common;
@@ -20,7 +21,20 @@ namespace GeekFlixServer.Controllers
         {
             return DBContext.Instance.All<OutputItem>().AsEnumerable().Skip(offset).Take(limit);
         }
+        [HttpGet("{*id}")]
+        public IActionResult GetByLocation(string id)
+        {
+            try
+            {
+                Stream stream = new FileStream(id, FileMode.Open, FileAccess.Read, FileShare.Read);
+                return File(stream, "application/octet-stream");
+            }
+            catch
+            {
+                return NotFound();
+            }
 
+        }
         // DELETE api/videos/somepath
         [HttpDelete("{path}")]
         public void Delete(string path)
