@@ -131,6 +131,12 @@
       <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{e6f4de2b-6125-43b5-bd98-f24459123239}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
