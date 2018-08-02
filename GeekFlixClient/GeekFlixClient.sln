@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekFlixClient", "GeekFlixClient\GeekFlixClient.csproj", "{A9169C18-0D14-41F6-A1D5-C89138346E2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|ARM.Build.0 = Debug|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|ARM.Deploy.0 = Debug|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x64.ActiveCfg = Debug|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x64.Build.0 = Debug|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x64.Deploy.0 = Debug|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x86.ActiveCfg = Debug|x86
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x86.Build.0 = Debug|x86
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Debug|x86.Deploy.0 = Debug|x86
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|ARM.ActiveCfg = Release|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|ARM.Build.0 = Release|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|ARM.Deploy.0 = Release|ARM
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x64.ActiveCfg = Release|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x64.Build.0 = Release|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x64.Deploy.0 = Release|x64
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x86.ActiveCfg = Release|x86
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x86.Build.0 = Release|x86
+		{A9169C18-0D14-41F6-A1D5-C89138346E2A}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F60644A2-6A90-467A-A014-512B33312181}
+	EndGlobalSection
+EndGlobal
