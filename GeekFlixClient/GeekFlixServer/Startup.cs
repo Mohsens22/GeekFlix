@@ -17,7 +17,7 @@ namespace GeekFlixServer
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            
+
         }
 
         public IConfiguration Configuration { get; }
@@ -35,6 +35,7 @@ namespace GeekFlixServer
             {
                 app.UseDeveloperExceptionPage();
             }
+            else { app.UseDeveloperExceptionPage(); }
 
             app.UseMvc();
         }
