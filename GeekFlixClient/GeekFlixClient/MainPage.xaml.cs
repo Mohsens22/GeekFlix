@@ -26,5 +26,10 @@ namespace GeekFlixClient
         {
             this.InitializeComponent();
         }
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var a = Rest.getListAsync();
+        }
     }
 }
