@@ -8,11 +8,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <StackPanel>
 
-        <MediaPlayerElement x:Name="mediaPlyr"
+        <MediaPlayerElement x:Name="mediaPlyr" 
                    Height="500" Width="1000" AutoPlay="True" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Top"/>
-        
-        
-    </Grid>
+
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Button Name="Del" Click="Del_Click" Margin="20" Content="Delete" Background="Red" Width="200" Height="100"/>
+            <Button Name="Nxt" Click="Nxt_Click" Content="Next" Margin="20" Width="200" Height="100"/>
+        </StackPanel>
+    </StackPanel>
 </Page>

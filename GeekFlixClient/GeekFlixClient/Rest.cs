@@ -27,20 +27,22 @@ namespace GeekFlixClient
                 return JsonConvert.DeserializeObject<List<OutputItem>>(str);
             }
         }
-        public static void DeleteItem(string path)
+        public static void DeleteItem(OutputItem item)
         {
-            var uri = baseUri + $"/{path}";
+            var uri = baseUri + $"/{item.OutputPath}";
             WebRequest request = WebRequest.Create(uri);
             request.Method = "DELETE";
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            if (response.StatusCode!=HttpStatusCode.Accepted 
-                || response.StatusCode != HttpStatusCode.OK 
-                || response.StatusCode != HttpStatusCode.NoContent 
+            if (response.StatusCode != HttpStatusCode.Accepted
+                || response.StatusCode != HttpStatusCode.OK
+                || response.StatusCode != HttpStatusCode.NoContent
                 || response.StatusCode != HttpStatusCode.Created
                 || response.StatusCode != HttpStatusCode.Found)
             {
-                
+                $"Something went wrong {response.StatusCode}".ShowMessage(response.ToString());
             }
         }
+        public static Uri GetDownloadLink(this OutputItem item) => new Uri(baseUri + $"/{item.OutputPath}");
+
     }
 }

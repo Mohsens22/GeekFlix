@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +24,7 @@ namespace GeekFlixClient
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        List<OutputItem> items;
         public MainPage()
         {
             this.InitializeComponent();
@@ -29,7 +32,18 @@ namespace GeekFlixClient
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var a = Rest.getListAsync();
+            items = Rest.getListAsync();
+            mediaPlyr.Source = MediaSource.CreateFromUri(items.First().GetDownloadLink());
+        }
+
+        private void Nxt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
