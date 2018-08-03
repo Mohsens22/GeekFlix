@@ -39,14 +39,31 @@ namespace GeekFlixServer.Controllers
         [HttpDelete("{*path}")]
         public void Delete(string path)
         {
+            path = path.Replace("/", @"\");
             var item = DBContext.Instance.All<OutputItem>().Where(x => x.OutputPath == path).FirstOrDefault();
 
             DBContext.LocalInstance.Write(() =>
             {
-                DBContext.LocalInstance.Add(item);
+                var ot = new OutputItem()
+                {
+                    AfterPause = item.AfterPause,
+                    BeforePause = item.BeforePause,
+                    EndTime = item.EndTime,
+                    Lines = item.Lines,
+                    Name = item.Name,
+                    OutputPath = item.OutputPath,
+                    SpeakingTime = item.SpeakingTime,
+                    StartTime = item.StartTime,
+                    SynthRate = item.SynthRate
+                };
+                DBContext.LocalInstance.Add(ot);
             });
             // Log the shit item
-            DBContext.Instance.Remove(item);
+            DBContext.Instance.Write(() =>
+            {
+                DBContext.Instance.Remove(item);
+            });
+
         }
     }
 }
