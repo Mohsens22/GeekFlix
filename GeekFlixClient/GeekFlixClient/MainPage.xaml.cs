@@ -29,21 +29,49 @@ namespace GeekFlixClient
         {
             this.InitializeComponent();
         }
+        OutputItem thisItem;
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            items = Rest.getListAsync();
-            mediaPlyr.Source = MediaSource.CreateFromUri(items.First().GetDownloadLink());
+            items = Rest.getListAsync(5, 0);
+            SetItem(items.First());
         }
 
         private void Nxt_Click(object sender, RoutedEventArgs e)
         {
-
+            GoToNxt();
+        }
+        void GoToNxt()
+        {
+            var index = items.IndexOf(thisItem);
+            if (index >= items.Count() - 1)
+            {
+                AppendNewItems();
+            }
+            SetItem(items[index + 1]);
         }
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
-
+            Rest.DeleteItem(thisItem);
+            GoToNxt();
+            items.Remove(thisItem);
+        }
+        void AppendNewItems()
+        {
+            var a = Rest.getListAsync(30, items.Count());
+            if (a.Count() == 0)
+            {
+                "Done!".ShowMessage("No Items to see");
+                return;
+            }
+            items.AddRange(a);
+        }
+        void SetItem(OutputItem itm)
+        {
+            mediaPlyr.Source = MediaSource.CreateFromUri(itm.GetDownloadLink());
+            subtitle.Text = itm.Lines;
+            thisItem = itm;
         }
     }
 }

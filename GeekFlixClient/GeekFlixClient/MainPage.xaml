@@ -18,5 +18,6 @@
             <Button Name="Del" Click="Del_Click" Margin="20" Content="Delete" Background="Red" Width="200" Height="100"/>
             <Button Name="Nxt" Click="Nxt_Click" Content="Next" Margin="20" Width="200" Height="100"/>
         </StackPanel>
+        <TextBlock Name="subtitle" FontSize="25" HorizontalAlignment="Center" />
     </StackPanel>
 </Page>
