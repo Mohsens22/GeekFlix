@@ -30,6 +30,12 @@ namespace GeekFlixClient
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            ("Something went wrong: " + e.Exception.Message).ShowMessage(e.Exception.ToString());
         }
 
         /// <summary>
@@ -82,7 +88,6 @@ namespace GeekFlixClient
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
-
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents

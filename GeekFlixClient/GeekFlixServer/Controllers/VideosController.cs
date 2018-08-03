@@ -36,7 +36,7 @@ namespace GeekFlixServer.Controllers
 
         }
         // DELETE api/videos/somepath
-        [HttpDelete("{path}")]
+        [HttpDelete("{*path}")]
         public void Delete(string path)
         {
             var item = DBContext.Instance.All<OutputItem>().Where(x => x.OutputPath == path).FirstOrDefault();

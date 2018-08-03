@@ -11,7 +11,7 @@ namespace Common
         public static Realm LocalInstance;
         public static void InitializeLocal()
         {
-            Instance = Realm.GetInstance(@"D:\Output\DB\DBMovieDB.realm");
+            Instance = Realm.GetInstance(@"e:\Output\DB\DBMovieDB.realm");
             LocalInstance = Realm.GetInstance(@"MovieDB.realm");
         }
     }
