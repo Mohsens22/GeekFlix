@@ -32,15 +32,15 @@ namespace GeekFlixClient
             var uri = baseUri + $"/{item.OutputPath}";
             WebRequest request = WebRequest.Create(uri);
             request.Method = "DELETE";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            if (response.StatusCode != HttpStatusCode.Accepted
-                || response.StatusCode != HttpStatusCode.OK
-                || response.StatusCode != HttpStatusCode.NoContent
-                || response.StatusCode != HttpStatusCode.Created
-                || response.StatusCode != HttpStatusCode.Found)
+            try
             {
-                $"Something went wrong {response.StatusCode}".ShowMessage(response.ToString());
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             }
+            catch (Exception e)
+            {
+                $"Something went wrong {e.Message}".ShowMessage(e.StackTrace);
+            }
+
         }
         public static Uri GetDownloadLink(this OutputItem item) => new Uri(baseUri + $"/{item.OutputPath}");
 
