@@ -40,6 +40,12 @@ namespace GeekFlixServer.Controllers
         public void Delete(string path)
         {
             var item = DBContext.Instance.All<OutputItem>().Where(x => x.OutputPath == path).FirstOrDefault();
+
+            DBContext.LocalInstance.Write(() =>
+            {
+                DBContext.LocalInstance.Add(item);
+            });
+            // Log the shit item
             DBContext.Instance.Remove(item);
         }
     }
