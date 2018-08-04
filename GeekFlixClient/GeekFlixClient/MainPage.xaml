@@ -19,5 +19,14 @@
             <Button Name="Nxt" Click="Nxt_Click" Content="Next" Margin="20" Width="200" Height="100"/>
         </StackPanel>
         <TextBlock Name="subtitle" FontSize="25" HorizontalAlignment="Center" />
+        <StackPanel Margin="20" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Current Index:" />
+                <TextBlock Name="crntindx" />
+            </StackPanel>
+            
+            <TextBox Name="indx" PlaceholderText="Item index" InputScope="Number" />
+            <Button Name="Go" Click="Go_Click" Content="Go"  Width="200" Height="100"/>
+        </StackPanel>
     </StackPanel>
 </Page>

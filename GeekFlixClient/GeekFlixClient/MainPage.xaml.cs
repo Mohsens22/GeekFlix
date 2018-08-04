@@ -24,6 +24,7 @@ namespace GeekFlixClient
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         List<OutputItem> items;
         public MainPage()
         {
@@ -33,8 +34,10 @@ namespace GeekFlixClient
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            items = Rest.getListAsync(5, 0);
-            SetItem(items.First());
+            object value = localSettings.Values["LastIndex"] ?? 0;
+            var lastandis = (int)value;
+            items = Rest.getListAsync();
+            SetItem(lastandis);
         }
 
         private void Nxt_Click(object sender, RoutedEventArgs e)
@@ -72,6 +75,23 @@ namespace GeekFlixClient
             mediaPlyr.Source = MediaSource.CreateFromUri(itm.GetDownloadLink());
             subtitle.Text = itm.Lines;
             thisItem = itm;
+            crntindx.Text = items.IndexOf(thisItem).ToString();
+            localSettings.Values["LastIndex"] = items.IndexOf(thisItem);
+
+        }
+        void SetItem(int index)
+        {
+            if (items.Count() <= index + 1)
+            {
+                items.AddRange(Rest.getListAsync(((index + 1) - items.Count()) + 10, items.Count()));
+            }
+            var item = items[index];
+            SetItem(item);
+        }
+        private void Go_Click(object sender, RoutedEventArgs e)
+        {
+            var index = int.Parse(indx.Text);
+            SetItem(index);
         }
     }
 }
