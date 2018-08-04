@@ -19,13 +19,23 @@ namespace GeekFlixClient
             var uri = baseUri + $"?limit={limit}&offset={offset}";
             HttpWebRequest req = WebRequest.Create(uri) as HttpWebRequest;
             req.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                var str = reader.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<OutputItem>>(str);
+                using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var str = reader.ReadToEnd();
+                    return JsonConvert.DeserializeObject<List<OutputItem>>(str);
+                }
             }
+            catch (Exception e)
+            {
+                $"Something went wrong {e.Message}".ShowMessage(e.StackTrace);
+                return null;
+            }
+
+
         }
         public static void DeleteItem(OutputItem item)
         {
